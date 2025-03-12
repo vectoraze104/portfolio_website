@@ -76,7 +76,7 @@ section {
 .nav-link {
     font-family: 'Roboto Slab', serif;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 350;
     color: #efefef;
 }
 
@@ -291,32 +291,6 @@ section {
     margin-bottom: 30px;
     color: #8a8a8a;
 }
-/* ===== FILTER BUTTONS STYLING ===== */
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.filter-btn {
-    border: 1px solid #17a2b8;
-    color: #17a2b8;
-    background: transparent;
-    font-size: 1rem;
-    margin: 7px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active, .filter-btn:hover {
-    background: #17a2b8;
-    color: white;
-}
-
 
 /* Portfolio Items Grid */
 .portfolio-item {
@@ -470,7 +444,7 @@ section {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#about">INTRO</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">ABOUT ME</a></li>
                 <li class="nav-item"><a class="nav-link" href="#portfolio">PORTFOLIO</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact"><b>CONTACT</b></a></li>
             </ul>
@@ -555,16 +529,6 @@ section {
         <!-- Portfolio Title & Subtext -->
         <h2 class="section-title">PORTFOLIO</h2>
         <p class="portfolio-subtext">A glimpse of the projects I've been working on</p>
-
-        <!-- Filter Buttons -->
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">Show all</button>
-            <button class="filter-btn" data-filter="python">Python</button>
-            <button class="filter-btn" data-filter="sql">SQL</button>
-            <button class="filter-btn" data-filter="scientific">Scientific paper</button>
-            <button class="filter-btn" data-filter="webscraper">WebScraper</button>
-        </div>
-
         <!-- Portfolio Grid (3x3 Structure) -->
         <div class="container">
             <div class="row g-4"> <!-- g-4 adds spacing between columns -->
@@ -606,7 +570,7 @@ section {
                        data-description="Creating an NLP Model with Python to find the sentiments for a movie from its trailer."
                        data-image="images/portfolio/output.jpg"
                        data-category="scientific">
-                        <img src="images/portfolio/youtube.jpg" alt="Project 3">
+                        <img src="images/portfolio/youtube_1.jpg" alt="Project 3">
                         <div class="portfolio-overlay">
                             <h3>YouTube Sentiment Analysis</h3>
                             <p>Creating an NLP Model with Python to find the sentiments for a movie from its trailer.</p>
@@ -653,8 +617,8 @@ section {
                        data-category="webscraper">
                         <img src="images/portfolio/cards.jpg" alt="Project 6">
                         <div class="portfolio-overlay">
-                            <h3>Web Scraping with Python</h3>
-                            <p>Scraping and analyzing web data using Python.</p>
+                            <h3>Credit Card Fraud Analytics</h3>
+                            <p>Running a fraud detection model on credit card transactions.</p>
                         </div>
                     </a>
                 </div>
@@ -719,29 +683,6 @@ document.querySelector('.scroll-down').addEventListener('click', function(e) {
     document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
 });
 
-// Portfolio Filter Functionality
-document.addEventListener("DOMContentLoaded", function () {
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const portfolioItems = document.querySelectorAll(".portfolio-item");
-
-    filterButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove("active"));
-            this.classList.add("active");
-
-            const category = this.getAttribute("data-filter");
-
-            portfolioItems.forEach(item => {
-                if (category === "all" || item.getAttribute("data-category") === category) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        });
-    });
-});
 
 // JavaScript to Handle Modal Data
 document.addEventListener("DOMContentLoaded", function () {
