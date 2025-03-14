@@ -278,11 +278,12 @@ section {
 }
 
 .exp-tab {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: #333;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
+    margin-top: 40px;
 }
 
 .exp-tab:hover {
@@ -341,8 +342,20 @@ section {
 .education-section {
     background-color: #f8f9fa;
     padding: 80px 0;
-    margin-top: 200px;
+    margin-top: 0px;
     text-align: center;
+}
+
+/* Center the title */
+.section-title {
+    text-align: center;
+}
+
+/* Entire card is clickable */
+.education-card-link {
+    text-decoration: none; /* Remove default underline */
+    display: block; /* Makes the entire card a link */
+    color: inherit; /* Prevents text from turning blue */
 }
 
 .education-card {
@@ -356,9 +369,13 @@ section {
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+    color: inherit;
 }
 
 .education-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
 }
 
@@ -374,10 +391,11 @@ section {
     margin-bottom: 5px;
 }
 
+/* Institution name is now a separate hyperlink */
 .edu-institution {
-    color: #007bff;
-    text-decoration: none;
     font-weight: 500;
+    color: #007bff; /* Default blue hyperlink */
+    text-decoration: none;
 }
 
 .edu-institution:hover {
@@ -495,35 +513,68 @@ section {
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    margin-top: 50px;
 }
 
 /* Scrolling container */
 .certifications-slider {
-    display: flex;
     overflow: hidden;
     position: relative;
     width: 100%;
-    margin-top: 100px;
+    display: flex;
+    align-items: center;
 }
 
 /* Moving images */
 .certifications-track {
     display: flex;
-    gap: 40px; /* Increased gap for better spacing */
-    animation: scroll 80s linear infinite;
+    gap: 40px;
+    animation: scrollCertifications 60s linear infinite;
+    white-space: nowrap;
 }
-
-/* Certification images - Increased size by 40% */
 .certification-image {
-    max-width: 610px; /* Previously 150px (150 * 1.4 = 210) */
-    max-height: 440px; /* Previously 100px (100 * 1.4 = 140) */
-    object-fit: contain;
-    border-radius: 5px;
+    width: 650px;  /* Adjust the width as needed */
+    height: 450px; /* Adjust the height as needed */
+    margin-top: 80px;
+    object-fit: contain; /* Ensures the entire image fits inside without cropping */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
-/* Smooth infinite scrolling effect */
-@keyframes scroll {
+/* Enlarge slightly & pause animation on hover */
+.certification-image:hover {
+    transform: scale(1.1);  /* Slight enlargement (10% bigger) */
+}
+/* Stop animation on hover */
+.certifications-track:hover {
+    animation-play-state: paused;
+}
+
+/* Scroll Buttons */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.scroll-btn.left {
+    left: 10px;
+}
+
+.scroll-btn.right {
+    right: 10px;
+}
+
+/* Continuous scrolling animation */
+@keyframes scrollCertifications {
     from {
         transform: translateX(0%);
     }
@@ -531,6 +582,7 @@ section {
         transform: translateX(-100%);
     }
 }
+
 
 /* ===== CONTACT SECTION ===== */
 .contact-section {
@@ -634,8 +686,9 @@ section {
                 <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/vectoraze104/portfolio_website/blob/main/Tanay_Singh_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                    <a class="nav-link" href="#" onclick="window.open('https://www.scribd.com/document/839295019/Tanay-Singh-Resume', '_blank')">Resume</a>
                 </li>
+                
             </ul>
         </div>
     </div>
@@ -686,14 +739,17 @@ section {
             <div class="col-md-8">
                 <h2 class="section-title">Hi, I'm Tanay.</h2>
                 <p class="about-text">
-                    I specialize in helping companies and researchers analyze and visualize their datasets. 
-                    I excel in <strong>data visualization</strong>. If you're looking for guidance on presenting 
-                    your results or building complex interactive charts, I'm the expert you're seeking.
+                    I am a seasoned Data Scientist and consultant with over 5 years of experience spread across various industries such as
+                    Retail, Pharmaceutical, Supply Chain and Finance. 
+                    My expertise lies in <strong>data analysis, predictive modeling,</strong> and <strong>data visualization</strong>, enabling organizations 
+                    to make informed, data-driven decisions.
+                    
                 </p>
                 <p class="about-text">
-                    With a solid track record in data science, I've collaborated with top research institutes 
-                    and leading private companies. My expertise spans various technologies, bridging the gap 
-                    between <strong>design and functionality</strong>.
+                    I have had the privilege of working with Forbes 21, Big4 organizations and leading private companies, 
+                    contributing to Amazon and Google Cloud Partner projects across the U.S., Australia, China, and India. 
+                    I specialize in designing, developing and building scalable data models in <strong>SQL</strong>, optimizing <u>Machine Learning Models</u> in <strong>python</strong>, 
+                    and deploying tailored business solutions that enhance efficiency and drive innovation.
                 </p>
 
                 <!-- Buttons -->
@@ -721,123 +777,160 @@ section {
 
         <!-- Experience Tabs -->
         <div class="experience-tabs">
-            <span class="exp-tab active" data-target="exp-northeastern">Northeastern University</span>
-            <span class="exp-tab" data-target="exp-montal">MontAI</span>
-            <span class="exp-tab" data-target="exp-legato">Legato</span>
-            <span class="exp-tab" data-target="exp-middleeast">Middle East Management Consultancy</span>
-            <span class="exp-tab" data-target="exp-manipal">Manipal Institute of Technology</span>
-            <span class="exp-tab" data-target="exp-cgi">CGI</span>
+            <span class="exp-tab active" data-target="exp-bharatpe">BharatPe</span>
+            <span class="exp-tab" data-target="exp-deloitte">Deloitte</span>
+            <span class="exp-tab" data-target="exp-wns">WNS Global Services</span>
+            <span class="exp-tab" data-target="exp-musigma">Mu Sigma Inc</span>
+            <span class="exp-tab" data-target="exp-samsung">Samsung Electronics</span>
         </div>
 
         <!-- Experience Content -->
         <div class="experience-content">
-            <!-- Northeastern University -->
-            <div class="exp-detail active" id="exp-northeastern">
-                <h3>Data Engineer | Data Analyst - <a href="#" class="exp-company">Northeastern University</a></h3>
-                <p class="exp-duration">Feb 2023 - Sep 2023</p>
+            <!-- BharatPe -->
+            <div class="exp-detail active" id="exp-bharatpe">
+                <h3>Lead Consultant | Data Scientist - <a href="#" class="exp-company">BharatPe</a></h3>
+                <p class="exp-duration">Jan 2024 - Feb 2025</p>
                 <ul class="exp-list">
-                    <li>Engineered high-availability data streaming analytics platform, ensuring a <b>98%</b> real-time uptime for <b>20</b> smart homes using Python.</li>
-                    <li>Built an energy dashboard visualizing Key Performance Indicators (<b>KPIs</b>) and metrics using <b>SQL, MariaDB</b>, and <b>Jupyter Notebooks</b>.</li>
-                    <li>Applied SQL query optimization and software engineering best practices, leading to a <b>60%</b> reduction in SQL query response times.</li>
-                    <li>Performed in-depth Exploratory Data Analysis (<b>EDA</b>) to unveil patterns and trends to support data-driven decision-making processes.</li>
+                    <li>Applied SQL query optimization and software engineering best practices, leading to a <b>60%</b> reduction in SQL query response times</li>
+                    <li>Executed in-depth Exploratory Data Analysis <b>(EDA)</b> to unveil patterns and trends to support data-driven decision-making processes.</li>
+                    <li>Engineered a financial reconciliation system reconciling <b>$2.92B</b> across <b>676M</b> FY23-25 transactions using <b>Python</b> and <b>advanced SQL techniques</b>. 
+                        Led and provided <b>training</b> to new recruits to build reconciliation on historical data.</li>
+                    <li>Created <b>Standardized</b> ad-hoc <b>process flow</b> to reduce ad-hoc project time by <b>19%</b> and increasing interaction with senior management.</li>
+                    <li>Built <b>12 financial dashboards</b> visualizing Key Performance Indicators <b>(KPIs)</b> and metrics using SQL on <u>Metabase, Power BI, 
+                        and Looker.</u></li>
+                    <li>Upgraded an 18-year-old tech stack by <b>migrating 22 reports</b> from <u>AWS S3 to SQL</u>, reducing annual IT costs 
+                        from <b>$1.5M to $235K</b> and increasing data accuracy by <b>34%.</b></li>
+                    <li>Spearheaded ETL and data engineering initiatives on Google Cloud and leveraging <b>GitHub</b> for version control which reduced turnaround time by <b>22%</b></li>
                 </ul>
             </div>
 
-            <!-- MontAI -->
-            <div class="exp-detail" id="exp-montal">
-                <h3>AI Research Intern - <a href="#" class="exp-company">MontAI</a></h3>
-                <p class="exp-duration">Jul 2022 - Dec 2022</p>
+            <!-- Deloitte -->
+            <div class="exp-detail" id="exp-deloitte">
+                <h3>Business Consultant - <a href="#" class="exp-company">Deloitte</a></h3>
+                <p class="exp-duration">Aug 2022 - Jul 2023</p>
                 <ul class="exp-list">
-                    <li>Developed deep learning models to enhance chatbot intelligence using NLP and TensorFlow.</li>
-                    <li>Collaborated with a research team to optimize AI models, reducing processing time by <b>35%</b>.</li>
+                    <li>Established collected, cleaned, and aggregated retail, cosmetic and energy datasets. 
+                        Created a standardized format for future data collection which improved operational efficiency by <b>46%.</b></li>
+                    <li>Automated management reporting using <b>Excel VBA</b> and <b>PowerBI</b>, reducing reporting time by <b>30%</b> through <b>SAP</b> ERP integration.</li>
+                    <li>Developed supply chain strategies that cut new product launch time by <b>38%</b> 
+                        using advanced data analytics to optimize market entry in new geographic regions.</li>
+                    <li>Built interactive dashboards in <b>PowerBI</b> and <b>Tableau</b> from <b>20+</b> datasets, enabling real-time <b>KPI</b> tracking and <b>demand forecasting</b>.</li>
+                    <li>Translated business objectives and Key Results <b>(OKRs)</b> into technical specifications, design documentation, and optimal solutions.</li>
+                    <li>Floated tenders, reviewed Business Proposals <b>(RFP, RPI)</b> and onboarded third party vendors for ad-hoc tasks.</li>
                 </ul>
             </div>
 
-            <!-- Legato -->
-            <div class="exp-detail" id="exp-legato">
-                <h3>Software Engineer - <a href="#" class="exp-company">Legato</a></h3>
-                <p class="exp-duration">Jan 2021 - Jun 2022</p>
+            <!-- WNS -->
+            <div class="exp-detail" id="exp-wns">
+                <h3>Lead Associate | Data Analyst- <a href="#" class="exp-company">WNS Global Services</a></h3>
+                <p class="exp-duration">Dec 2021 - Aug 2022</p>
                 <ul class="exp-list">
-                    <li>Designed scalable microservices architecture using AWS and Kubernetes.</li>
-                    <li>Implemented CI/CD pipelines, reducing deployment time by <b>50%</b>.</li>
+                    <li>Implemented analytics techniques to optimize client pharmaceutical offerings both online and offline boosting profit by <b>17%</b>.</li>
+                    <li>Leveraged <b>Power Query</b> and advanced Excel <b>(VBA)</b> to build excel reports tracking key metrics, cutting project turnaround time by <b>25%</b>.</li>
+                    <li>Developed state-of-the-art statistical models in Python, including:
+                        <ul>
+                            <li><b>Regression Models:</b> Forecasted trends and performance indicators.</li>
+                            <li><b>Clustering Algorithms:</b> Identified distinct customer and market segments.</li>
+                            <li><b>Feature Selection & Engineering:</b> Employed for predictive analytics and feature importance.</li>
+                            <li><b>Classification:</b> Conducted customer segmentation based on Recency, Frequency, and Monetary value.</li>
+                        </ul>
+                    </li>
+                    <li>Delivered insights on industry market size, product categorization, competitor analysis, and price comparison, improving Business Intelligence (BI) metrics by <b>20%</b>.</li>
+                    <li>Conducted rigorous <b>ROI analyses</b> for omnichannel retail marketing campaigns, achieving a <b>40%</b> increase in online sales.</li>
+                    <li><b>Mentored</b> and led a team of <b>4</b> new graduates in a training program focused on <b>Big Data</b> and <b>visualization</b> tools (Jira, SQL, PowerBI).</li>
+                    <li>Orchestrated A/B Testing for various marketing strategies, reducing marketing spend by <b>25%</b>.</li>
+                    <li>Designed interactive <b>PowerBI Dashboards</b> to derive meaningful insights, leading to a <b>12%</b> increase in pharmaceutical product sales.</li>
                 </ul>
             </div>
 
-            <!-- Middle East Management Consultancy -->
-            <div class="exp-detail" id="exp-middleeast">
-                <h3>Business Intelligence Analyst - <a href="#" class="exp-company">Middle East Management Consultancy</a></h3>
-                <p class="exp-duration">Mar 2020 - Dec 2020</p>
+            <!-- Mu Sigma -->
+            <div class="exp-detail" id="exp-musigma">
+                <h3>Trainee Apprentice Leader | Analytics Consultant- <a href="#" class="exp-company">Mu Sigma Inc</a></h3>
+                <p class="exp-duration">Aug 2020 - Nov 2021</p>
                 <ul class="exp-list">
-                    <li>Developed data visualization dashboards to track financial performance.</li>
-                    <li>Integrated machine learning models for predictive analytics.</li>
+                    <li>Developed <b>segmentation models</b> using transactional data, demographics, and behavioral patterns to create targeted loyalty offers, achieving a <b>14%</b> increase in redemption rates.</li>
+                    <li>Implemented data-driven strategies through machine learning, decreasing churn by <b>15%</b> and boosting membership growth by <b>10%</b>.</li>
+                    <li>Designed interactive <b>Tableau Dashboards</b> to derive meaningful insights, leading to a <b>12%</b> increase in pharmaceutical finance sales.</li>
+                    <li>Utilized <b>MySQL</b> for efficient data querying, ETL, and manipulations of <b>26 TB</b> of data, streamlining data processing and enhancing data ingestion quality.</li>
+                    <li>Established <b>DataOps</b> for version control with git, data cleaning, data management, governance, and data lineage tracking for datasets.</li>
+                    <li>Maintained integrity and compliance with clean data sets for <b>4</b> projects, contributing to a <b>15%</b> improvement in accuracy and reliability.</li>
+                    <li>Collaborated with cross-functional teams, managed stakeholders, and gathered requirements for streamlined project communication.</li>
                 </ul>
             </div>
 
-            <!-- Manipal Institute of Technology -->
-            <div class="exp-detail" id="exp-manipal">
-                <h3>Practice School Student | Researcher - <a href="#" class="exp-company">Manipal Institute of Technology</a></h3>
-                <p class="exp-duration">Jan 2016 - May 2016</p>
+            <!-- Samsung -->
+            <div class="exp-detail" id="exp-samsung">
+                <h3>Senior Associate | Retail Analytics - <a href="#" class="exp-company">Samsung Electronics</a></h3>
+                <p class="exp-duration">May 2018 - Jul 2020</p>
                 <ul class="exp-list">
-                    <li>Developed a Central Data Repository for MIT, Manipal.</li>
-                    <li>Built a web application for data entry, analysis, and report generation.</li>
-                    <li>Utilized <b>Sqoop</b> and <b>Hadoop</b> for big data processing.</li>
-                    <li>Generated dynamic reports using <b>Hive</b>.</li>
+                    <li>Developed <b>Campaign Analytics models for</b> Evaluated multi-channel marketing campaigns <b>(SEO, SEM, email, social media)</b> by 
+                        tracking KPIs (user acquisition, conversion rates, brand familiarity), achieving a <b>15%</b> reduction in customer acquisition costs and boosting revenue.</li>
+                    <li>Applied <b>MMM</b> techniques to drive market research and optimize marketing channel effectiveness, successfully delivering analytical solutions for promotional
+                         strategies.</li>
+                    <li>Provided actionable business recommendations and optimized digital marketing channels (Facebook, Twitter, Instagram) via SEO, SEM, email analytics, 
+                        and social media campaigns—resulting in a <b>30%</b> increase in website traffic and a <b>25%</b> boost in social
+                         media followers within six months.</li>
                 </ul>
-            </div>
-
-            <!-- CGI -->
-            <div class="exp-detail" id="exp-cgi">
-                <h3>Software Development Intern - <a href="#" class="exp-company">CGI</a></h3>
-                <p class="exp-duration">May 2015 - Jul 2015</p>
-                <p>Developed a Project Management web application that enabled collaboration between users across departments.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Education Section -->
+<!-- Education Section -->
 <section id="education" class="education-section">
     <div class="container">
         <h2 class="section-title">Education</h2>
 
-        <!-- Education Cards -->
-        <div class="education-card">
-            <div class="education-info">
-                <h3>Master of Science in Data Science</h3>
-                <a href="https://www.ljmu.ac.uk/" class="edu-institution">Liverpool John Moore University, Liverpool, England, UK</a>
-                <p class="edu-details">Relevant Coursework: Data Mining, Machine Learning, Machine Learning Operations, Natural Language Processing</p>
+        <!-- Master of Science -->
+        <a href="https://www.ljmu.ac.uk/" target="_blank" class="education-card-link">
+            <div class="education-card">
+                <div class="education-info">
+                    <h3>Master of Science in Data Science</h3>
+                    <p class="edu-institution">Liverpool John Moore University, Liverpool, England, UK</p>
+                    <p class="edu-details">Relevant Coursework: Data Mining, Machine Learning, Machine Learning Operations, Natural Language Processing</p>
+                </div>
+                <div class="education-year">Aug 2021 - Feb 2023</div>
             </div>
-            <div class="education-year">Aug 2021 - Feb 2023</div>
-        </div>
+        </a>
 
-        <div class="education-card">
-            <div class="education-info">
-                <h3>Executive Post-Graduate in Data Science</h3>
-                <a href="https://www.iiitb.ac.in/" class="edu-institution">International Institute of Information Technology</a>
-                <p class="edu-details">Relevant Coursework: Data Mining, Machine Learning, Machine Learning Operations, Data Visualization</p>
+        <!-- Executive Post-Graduate in Data Science -->
+        <a href="https://www.iiitb.ac.in/" target="_blank" class="education-card-link">
+            <div class="education-card">
+                <div class="education-info">
+                    <h3>Executive Post-Graduate in Data Science</h3>
+                    <p class="edu-institution">International Institute of Information Technology</p>
+                    <p class="edu-details">Relevant Coursework: Data Mining, Machine Learning, Machine Learning Operations, Data Visualization</p>
+                </div>
+                <div class="education-year">Aug 2021 - Nov 2022</div>
             </div>
-            <div class="education-year">Aug 2021 - Nov 2022</div>
-        </div>
+        </a>
 
-        <div class="education-card">
-            <div class="education-info">
-                <h3>Master of Business Administration (MBA) – Marketing</h3>
-                <a href="https://www.siu.edu.in/" class="edu-institution">Symbiosis International University</a>
-                <p class="edu-details">Relevant Coursework: Marketing Techniques, Business Administration</p>
+        <!-- Master of Business Administration (MBA) -->
+        <a href="https://www.siu.edu.in/" target="_blank" class="education-card-link">
+            <div class="education-card">
+                <div class="education-info">
+                    <h3>Master of Business Administration (MBA) – Marketing</h3>
+                    <p class="edu-institution">Symbiosis International University</p>
+                    <p class="edu-details">Relevant Coursework: Marketing Techniques, Business Administration</p>
+                </div>
+                <div class="education-year">May 2016 - Apr 2018</div>
             </div>
-            <div class="education-year">May 2016 - Apr 2018</div>
-        </div>
+        </a>
 
-        <div class="education-card">
-            <div class="education-info">
-                <h3>Bachelor of Sciences – Business Administration</h3>
-                <class="edu-institution">IHM Pusa
+        <!-- Bachelor of Sciences – Business Administration -->
+        <a href="https://www.ihmpusa.net/" target="_blank" class="education-card-link">
+            <div class="education-card">
+                <div class="education-info">
+                    <h3>Bachelor of Sciences – Business Administration</h3>
+                    <p class="edu-institution">IHM Pusa</p>
+                </div>
+                <div class="education-year">May 2012 - Apr 2015</div>
             </div>
-            <div class="education-year">May 2012 - Apr 2015</div>
-        </div>
+        </a>
+
     </div>
 </section>
-
 
 
 <!-- project Section -->
@@ -946,34 +1039,65 @@ section {
 </section>
 </section>
 
-<!-- Certification Section -->
 <section id="certifications" class="certifications-section">
     <h2 class="section-title">Certifications</h2>
 
-    <div class="certifications-slider">
-        <div class="certifications-track">
-            <!-- Original Image Set -->
-            <img src="images/certificates/applied_datascience_capstone.png" class="certification-image" alt="Certification 1">
-            <img src="images/certificates/data_analysis_with_python.png" class="certification-image" alt="Certification 2">
-            <img src="images/certificates/IBM_datascience.png" class="certification-image" alt="Certification 3">
-            <img src="images/certificates/sql_advance.png" class="certification-image" alt="Certification 4">
-            <img src="images/certificates/python_basic.png" class="certification-image" alt="Certification 5">
-            <img src="images/certificates/python_badge_hackerrank.jpg" class="certification-image" alt="Certification 6">
-            <img src="images/certificates/sql_badge_hackerrank.jpg" class="certification-image" alt="Certification 7">
-            
-            <!-- Duplicate Image Set for Seamless Loop -->
-            <img src="images/certificates/applied_datascience_capstone.png" class="certification-image" alt="Certification 1">
-            <img src="images/certificates/data_analysis_with_python.png" class="certification-image" alt="Certification 2">
-            <img src="images/certificates/IBM_datascience.png" class="certification-image" alt="Certification 3">
-            <img src="images/certificates/sql_advance.png" class="certification-image" alt="Certification 4">
-            <img src="images/certificates/python_basic.png" class="certification-image" alt="Certification 5">
-            <img src="images/certificates/python_badge_hackerrank.jpg" class="certification-image" alt="Certification 6">
-            <img src="images/certificates/sql_badge_hackerrank.jpg" class="certification-image" alt="Certification 7">
+    <div class="certifications-container">
+        <button class="scroll-btn left" onclick="scrollCertifications('left')">&#10094;</button>
+
+        <div class="certifications-slider">
+            <div class="certifications-track">
+                <!-- Original Set of Images -->
+                <a href="https://coursera.org/share/671293a58602a3d9ffe0a20ecc55a0e0" target="_blank">
+                    <img src="images/certificates/applied_datascience_capstone.png" class="certification-image" alt="Certification 1">
+                </a>
+                <a href="https://coursera.org/share/7d824112cfe8c060e5e7946fa2c0d245" target="_blank">
+                    <img src="images/certificates/data_analysis_with_python.png" class="certification-image" alt="Certification 2">
+                </a>
+                <a href="https://coursera.org/share/a0806a741512bc8adf4c83aea2397195" target="_blank">
+                    <img src="images/certificates/IBM_datascience.png" class="certification-image" alt="Certification 3">
+                </a>
+                <a href="https://www.hackerrank.com/certificates/iframe/0a73206c3c36" target="_blank">
+                    <img src="images/certificates/sql_advance.png" class="certification-image" alt="Certification 4">
+                </a>
+                <a href="https://www.hackerrank.com/certificates/iframe/86d10328f021" target="_blank">
+                    <img src="images/certificates/python_basic.png" class="certification-image" alt="Certification 5">
+                </a>
+                <a href="https://www.hackerrank.com/profile/tanay_singh2013" target="_blank">
+                    <img src="images/certificates/python_badge_hackerrank.jpg" class="certification-image" alt="Certification 6">
+                </a>
+                <a href="https://www.hackerrank.com/profile/tanay_singh2013" target="_blank">
+                    <img src="images/certificates/sql_badge_hackerrank.jpg" class="certification-image" alt="Certification 7">
+                </a>
+
+                <!-- Duplicate Set of Images for Infinite Loop -->
+                <a href="https://coursera.org/share/671293a58602a3d9ffe0a20ecc55a0e0" target="_blank">
+                    <img src="images/certificates/applied_datascience_capstone.png" class="certification-image" alt="Certification 1">
+                </a>
+                <a href="https://coursera.org/share/7d824112cfe8c060e5e7946fa2c0d245" target="_blank">
+                    <img src="images/certificates/data_analysis_with_python.png" class="certification-image" alt="Certification 2">
+                </a>
+                <a href="https://coursera.org/share/a0806a741512bc8adf4c83aea2397195" target="_blank">
+                    <img src="images/certificates/IBM_datascience.png" class="certification-image" alt="Certification 3">
+                </a>
+                <a href="https://www.hackerrank.com/certificates/iframe/0a73206c3c36" target="_blank">
+                    <img src="images/certificates/sql_advance.png" class="certification-image" alt="Certification 4">
+                </a>
+                <a href="https://www.hackerrank.com/certificates/iframe/86d10328f021" target="_blank">
+                    <img src="images/certificates/python_basic.png" class="certification-image" alt="Certification 5">
+                </a>
+                <a href="https://www.hackerrank.com/profile/tanay_singh2013" target="_blank">
+                    <img src="images/certificates/python_badge_hackerrank.jpg" class="certification-image" alt="Certification 6">
+                </a>
+                <a href="https://www.hackerrank.com/profile/tanay_singh2013" target="_blank">
+                    <img src="images/certificates/sql_badge_hackerrank.jpg" class="certification-image" alt="Certification 7">
+                </a>
+            </div>
         </div>
+
+        <button class="scroll-btn right" onclick="scrollCertifications('right')">&#10095;</button>
     </div>
 </section>
-
-
 
 
 <!-- Contact Me Section -->
@@ -981,9 +1105,10 @@ section {
     <div class="container text-center">
         <h2 class="section-title">CONTACT</h2>
         <p class="contact-subtext">
-            Feel free to contact me for any questions. <br>
+            <b>Have questions or want to collaborate? </b><br><br>I’m always happy to connect and chat - whether it’s about data science, 
+            coding, just exchanging ideas or even to play a badminton match together!<br>
             For open-source projects, please check my work on <a href="https://www.github.com/vectoraze104" target="_blank">GitHub</a> 
-            and my professional profile on <a href="https://www.linkedin.com/in/tanay-singh" target="_blank">LinkedIn</a>. <br>
+            and connect with me professionally on <a href="https://www.linkedin.com/in/tanay-singh" target="_blank">LinkedIn</a>. <br>
             You can also reach me via phone on <a href="tel:+14373229396">+1 (437) 322-9396</a> or email me at <a href="mailto:tanay.singh2013@gmail.com">tanay.singh2013@gmail.com</a>.
         </p>
 
@@ -993,6 +1118,7 @@ section {
             <a href="tel:+14373229396" class="btn btn-outline-info">PHONE</a>
             <a href="mailto:tanay.singh2013@gmail.com" class="btn btn-outline-info">EMAIL</a>
             <a href="https://www.linkedin.com/in/tanay-singh" target="_blank" class="btn btn-outline-info">LINKEDIN</a> <!-- Replace LINKEDIN_PLACEHOLDER with your LinkedIn link -->
+            <a href="https://www.scribd.com/document/839295019/Tanay-Singh-Resume" target="_blank" class="btn btn-outline-info">RESUME</a>
         </div>
     </div>
 </section>
@@ -1091,6 +1217,40 @@ document.addEventListener("scroll", function () {
             link.classList.add("active");
         }
     });
+});
+
+let isScrolling;
+const slider = document.querySelector('.certifications-slider'); // Scrolling container
+const track = document.querySelector('.certifications-track'); // Moving images
+
+// Function to scroll left or right
+function scrollCertifications(direction) {
+    const scrollAmount = 300; // Adjust scroll step
+
+    // Pause animation when manually scrolling
+    track.style.animationPlayState = 'paused';
+
+    if (direction === "left") {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+
+    // Ensure animation resumes after scrolling stops
+    clearTimeout(isScrolling);
+    isScrolling = setTimeout(() => {
+        track.style.animationPlayState = 'running';
+    }, 2000);
+}
+
+// Stop animation when hovering
+track.addEventListener("mouseenter", function () {
+    track.style.animationPlayState = "paused";
+});
+
+// Resume animation when mouse leaves
+track.addEventListener("mouseleave", function () {
+    track.style.animationPlayState = "running";
 });
 
 
