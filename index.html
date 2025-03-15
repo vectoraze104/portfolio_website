@@ -1177,20 +1177,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     projectItems.forEach(item => {
         item.addEventListener("click", function () {
-            // Get data attributes
+            // Get project details from data attributes
             const title = this.getAttribute("data-title");
             const description = this.getAttribute("data-description");
             const image = this.getAttribute("data-image");
-            const link = this.getAttribute("data-link");
+            const link = this.getAttribute("data-link");  // Get project-specific link
 
-            // Populate modal with the data
+            // Populate the modal with project details
             document.getElementById("projectModalLabel").textContent = title;
             document.getElementById("projectDescription").textContent = description;
             document.getElementById("projectImage").src = image;
-            document.getElementById("projectLink").href = link;
+            
+            // Ensure the correct project link is assigned
+            const projectLinkElement = document.getElementById("projectLink");
+            if (link) {
+                projectLinkElement.href = link;  
+                projectLinkElement.style.display = "inline-block"; // Show button if link exists
+            } else {
+                projectLinkElement.style.display = "none"; // Hide button if no link
+            }
         });
     });
 });
+
 
 // Smooth Scrolling for Navigation Links (Excluding Resume)
 document.querySelectorAll('.nav-link').forEach(anchor => {
