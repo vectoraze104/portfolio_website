@@ -676,6 +676,39 @@ section {
     border-radius: 10px;
 }
 
+/* Justify Modal Text */
+.modal-text {
+    text-align: justify;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Left Align Modal Headers */
+.modal-header-left {
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: bold;
+    /* color: #007bff; Blue color for emphasis */
+    margin-top: 15px;
+}
+
+/* Left Align List Items */
+.modal-list {
+    text-align: left;
+    padding-left: 20px; /* Add left padding for better readability */
+}
+
+/* Style for the Image */
+.modal-image {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 10px auto; /* Center the image */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
 
     </style>
 </head>
@@ -859,7 +892,7 @@ section {
 
             <!-- Mu Sigma -->
             <div class="exp-detail" id="exp-musigma">
-                <h3>Trainee Apprentice Leader | Analytics Consultant-    ><a href="#" class="exp-company">Mu Sigma Inc</a></h3>
+                <h3>Trainee Apprentice Leader | Analytics Consultant- <a href="#" class="exp-company">Mu Sigma Inc</a></h3>
                 <p class="exp-duration">Aug 2020 - Nov 2021</p>
                 <ul class="exp-list">
                     <li>Developed <b>segmentation models</b> using transactional data, demographics, and behavioral patterns to create targeted loyalty offers, achieving a <b>14%</b> increase in redemption rates.</li>
@@ -957,21 +990,85 @@ section {
         <div class="container">
             <div class="row g-4"> <!-- g-4 adds spacing between columns -->
 
-                <!-- Project 1 -->
-                <div class="col-md-4">
-                    <a href="#" class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal"
-                       data-title="Bike Sharing Demand Analytics"
-                       data-description="Assessing the impact of weather on bikesharing in San Francisco."
-                       data-link="https://github.com/vectoraze104/Bike_Sharing_Analytics"
-                       data-image="images/portfolio/sfo.jpg"
-                       data-category="python">
-                        <img src="images/portfolio/sfo.jpg" alt="Project 1">
-                        <div class="project-overlay">
-                            <h3>Bike Sharing Demand Analytics</h3>
-                            <p>Assessing the impact of weather on bikesharing in San Francisco.</p>
-                        </div>
-                    </a>
-                </div>
+<!-- Project 1 (Updated) -->
+<div class="col-md-4">
+    <a href="#" class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal"
+       data-title="Bay Area Bike Share Analysis"
+       data-description="
+       <div class='modal-description'>
+
+        <h5 class='modal-header-left'>Description</h5>
+        <p class='modal-text'>
+            This project is an end-to-end data science portfolio that analyzes bike sharing in the San Francisco Bay Area.
+            The goal is to explore and understand the factors influencing bike usage patterns, rider behavior, and 
+            route popularity by combining multiple datasets:
+        </p>
+ 
+        <h6 class='modal-header-left'>🚴 Bike Share Data:</h6>
+        <p class='modal-text'>Detailed trip-level information including start/end times, stations, durations, and user types.</p>
+ 
+        <h6 class='modal-header-left'>🌦️ Weather Data:</h6>
+        <p class='modal-text'>Hourly weather conditions (temperature, humidity, wind, etc.) to study their impact on bike usage.</p>
+ 
+        <h6 class='modal-header-left'>📍 Station Data:</h6>
+        <p class='modal-text'>Metadata on bike share stations (location, dock count, kiosk availability, and neighborhood information) to support spatial analysis.</p>
+ 
+        <h5 class='modal-header-left'>Project Overview</h5>
+ 
+        <h6 class='modal-header-left'>📊 Data Integration:</h6>
+        <p class='modal-text'>The bike share, weather, and station datasets are merged to form a comprehensive dataset. 
+           This allows us to link trip details with weather conditions and station attributes.</p>
+ 
+        <h6 class='modal-header-left'>📈 Exploratory Data Analysis (EDA):</h6>
+        <ul class='modal-list'>
+            <li>Distribution of trip durations and distances.</li>
+            <li>Temporal patterns in bike usage (hourly, daily, and monthly trends).</li>
+            <li>Differences in usage between subscriber and casual users.</li>
+            <li>Spatial patterns and popular routes visualized through interactive maps.</li>
+        </ul>
+ 
+        <h6 class='modal-header-left'>🛠️ Feature Engineering:</h6>
+        <ul class='modal-list'>
+            <li>Converting time columns to appropriate datetime formats.</li>
+            <li>Extracting wind direction and converting wind speeds from MPH to KM/H.</li>
+            <li>Imputing missing station attributes using a nearest neighbor approach based on geolocation.</li>
+        </ul>
+ 
+        <h6 class='modal-header-left'>📊 Visualization and Insights:</h6>
+        <ul class='modal-list'>
+            <li>How weather affects bike usage.</li>
+            <li>Hourly and monthly trends in trips.</li>
+            <li>Popular routes and potential areas for station expansion.</li>
+        </ul>
+ 
+        <h5 class='modal-header-left'>Outcome</h5>
+        <p class='modal-text'>
+            The insights drawn from this project can help:
+        </p>
+        <ul class='modal-list'>
+            <li>Understand the influence of weather and time on bike share usage.</li>
+            <li>Identify popular routes and areas with high demand.</li>
+            <li>Inform operational strategies for optimizing station locations and managing the bike share fleet.</li>
+        </ul>
+ 
+        <p class='modal-text'>
+            This project is continuously evolving, and additional analyses 
+            (such as predictive modeling for trip demand) are planned for future iterations.
+        </p>
+ 
+    </div>
+       "
+       data-image="images/portfolio/sfo.jpg"
+       data-link="https://github.com/vectoraze104/Bike_Sharing_Analytics"
+       data-category="python">
+        <img src="images/portfolio/sfo.jpg" alt="Project 1">
+        <div class="project-overlay">
+            <h3>Bay Area Bike Share Analysis</h3>
+            <p>Exploring the factors influencing bike usage in San Francisco.</p>
+        </div>
+    </a>
+</div>
+
 
                 <!-- Project 2 -->
                 <div class="col-md-4">
@@ -994,7 +1091,6 @@ section {
                        data-title="YouTube Sentiment Analysis"
                        data-description="Creating an NLP Model with Python to find the sentiments for a movie from its trailer."
                        data-image="images/portfolio/output.jpg"
-                       data-link="https://github.com/vectoraze104/webscraper"
                        data-category="scientific">
                         <img src="images/portfolio/youtube_1.jpg" alt="Project 3">
                         <div class="project-overlay">
@@ -1008,7 +1104,60 @@ section {
                 <div class="col-md-4">
                     <a href="#" class="project-item" data-bs-toggle="modal" data-bs-target="#projectModal"
                        data-title="WebScraper"
-                       data-description="Scraping and analyzing web data using Python."
+                       data-description="
+                       <div class='modal-description'>
+                    
+                           <h5 class='modal-header-left'>Description</h5>
+                           <p class='modal-text'>
+                               This project implements a Python web scraper to extract historical weather data from weatherforyou.com.
+                               The scraper is designed to work over a specified date range and collect detailed weather information for each day within that range.
+                           </p>
+                    
+                           <h5 class='modal-header-left'>Project Overview</h5>
+                    
+                           <h6 class='modal-header-left'>📅 Date Range Definition:</h6>
+                           <ul class='modal-list'>
+                               <li>Uses the <b>datetime</b> module to define a start and end date (default: Oct 24 – Oct 31, 2019).</li>
+                               <li>The user can modify the range dynamically.</li>
+                               <li>Dates are generated using <b>timedelta</b> to iterate over each day.</li>
+                           </ul>
+                    
+                           <h6 class='modal-header-left'>🔗 URL Construction & Data Retrieval:</h6>
+                           <ul class='modal-list'>
+                               <li>Dynamically constructs a URL for each date to request historical weather data for <b>San Francisco, CA (Zip: 94102)</b>.</li>
+                               <li>Uses <b>requests</b> to send HTTP GET requests.</li>
+                               <li>Includes basic error handling to check response status codes.</li>
+                           </ul>
+                    
+                           <h6 class='modal-header-left'>🔍 HTML Parsing & Data Extraction:</h6>
+                           <ul class='modal-list'>
+                               <li>Parses retrieved HTML content using <b>BeautifulSoup</b>.</li>
+                               <li>Locates the nested table containing weather data via class <code>'IntWxHeader'</code>.</li>
+                               <li>Processes table rows, extracting relevant weather details.</li>
+                               <li>Appends the current date to each extracted row.</li>
+                           </ul>
+                    
+                           <h6 class='modal-header-left'>📊 Data Aggregation:</h6>
+                           <ul class='modal-list'>
+                               <li>Extracted data is stored in a list.</li>
+                               <li>First successful extraction captures table headers dynamically.</li>
+                               <li>Data is converted into a <b>pandas DataFrame</b> for structured analysis.</li>
+                           </ul>
+                    
+                           <h6 class='modal-header-left'>⚡ Additional Features:</h6>
+                           <ul class='modal-list'>
+                               <li>Displays a <b>progress bar</b> using the <b>rich</b> library.</li>
+                               <li>Includes <b>time.sleep(0.5)</b> to avoid overwhelming the server.</li>
+                               <li>Final dataset can be <b>exported as a CSV</b> for further analysis.</li>
+                           </ul>
+                    
+                           <h5 class='modal-header-left'>Outcome</h5>
+                           <p class='modal-text'>
+                               This scraper automates data collection from a dynamic website, demonstrating an end-to-end process from URL construction and HTTP requests
+                               to HTML parsing, data aggregation, and storage in a structured format for analysis.
+                           </p>
+                    
+                       </div>"
                        data-image="images/portfolio/output.jpg"
                        data-link="https://github.com/vectoraze104/webscraper"
                        data-category="data-engineering">
@@ -1158,7 +1307,7 @@ section {
                 <p id="projectDescription" class="mt-3">Project description goes here...</p>
             </div>
             <div class="modal-footer">
-                <a id="projectLink" href="https://github.com/vectoraze104/webscraper" target="_blank" class="btn btn-primary">View Project</a>
+                <a id="projectLink" href="#" target="_blank" class="btn btn-primary">View Project</a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
@@ -1180,16 +1329,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     projectItems.forEach(item => {
         item.addEventListener("click", function () {
-            // Get project details from data attributes
             const title = this.getAttribute("data-title");
             const description = this.getAttribute("data-description");
             const image = this.getAttribute("data-image");
-            const link = this.getAttribute("data-link");  // Get project-specific link
+            const link = this.getAttribute("data-link") || "#"; // Default to '#' if no link provided
 
-            // Populate the modal with project details
-            document.getElementById("projectModalLabel").textContent = title;
-            document.getElementById("projectDescription").textContent = description;
+            // Populate modal with project details
+            document.getElementById("projectModalLabel").innerHTML = title;
+            document.getElementById("projectDescription").innerHTML = description; // FIXED: Uses innerHTML instead of textContent
             document.getElementById("projectImage").src = image;
+            document.getElementById("projectLink").href = link;
             
             // Ensure the correct project link is assigned
             const projectLinkElement = document.getElementById("projectLink");
